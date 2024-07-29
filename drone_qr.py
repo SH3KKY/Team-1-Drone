@@ -137,7 +137,7 @@ sock.bind(('', TELLO_PORT))
 
 # 問い合わせスレッド起動
 ask_thread = threading.Thread(target=ask)
-ask_thread.daemon = True #ask_thread.setDaemon(True)
+ask_thread.setDaemon(True) #ask_thread.daemon = True 
 ask_thread.start()
 
 # 受信用スレッドの作成
