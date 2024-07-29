@@ -61,37 +61,37 @@ def land():
 # 上昇(20cm)
 def up():
         try:
-            sent = sock.sendto('up 20'.encode(encoding="utf-8"), TELLO_ADDRESS)
+            sent = sock.sendto('up 30'.encode(encoding="utf-8"), TELLO_ADDRESS)
         except:
             pass
 # 下降(20cm)
 def down():
         try:
-            sent = sock.sendto('down 20'.encode(encoding="utf-8"), TELLO_ADDRESS)
+            sent = sock.sendto('down 30'.encode(encoding="utf-8"), TELLO_ADDRESS)
         except:
             pass
 # 前に進む(0cm)
 def forward():
         try:
-            sent = sock.sendto('forward 15'.encode(encoding="utf-8"), TELLO_ADDRESS)
+            sent = sock.sendto('forward 30'.encode(encoding="utf-8"), TELLO_ADDRESS)
         except:
             pass
 # 後に進む(0cm)
 def back():
         try:
-            sent = sock.sendto('back 15'.encode(encoding="utf-8"), TELLO_ADDRESS)
+            sent = sock.sendto('back 30'.encode(encoding="utf-8"), TELLO_ADDRESS)
         except:
             pass
 # 右に進む(0cm)
 def right():
         try:
-            sent = sock.sendto('right 15'.encode(encoding="utf-8"), TELLO_ADDRESS)
+            sent = sock.sendto('right 30'.encode(encoding="utf-8"), TELLO_ADDRESS)
         except:
             pass
 # 左に進む(0cm)
 def left():
         try:
-            sent = sock.sendto('left 15'.encode(encoding="utf-8"), TELLO_ADDRESS)
+            sent = sock.sendto('left 30'.encode(encoding="utf-8"), TELLO_ADDRESS)
         except:
             pass
 # 右回りに回転(90 deg)
@@ -107,7 +107,7 @@ def ccw():
         except:
             pass
 # 速度変更(例：速度40cm/sec, 0 < speed < 100)
-def set_speed(n=40):
+def set_speed(n=100):
         try:
             sent = sock.sendto(f'speed {n}'.encode(encoding="utf-8"), TELLO_ADDRESS)
         except:
