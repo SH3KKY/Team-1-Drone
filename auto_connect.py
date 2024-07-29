@@ -21,7 +21,7 @@ def connect():
     # Display "Connection Successful" or "Connection Failed".
     print("Connecting.")
     for i in range(100):
-        time.sleep(0.5)
+        time.sleep(1)
         if iface.status() == const.IFACE_CONNECTED:
             print('Connected!')
             break
