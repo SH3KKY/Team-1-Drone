@@ -3,6 +3,7 @@ import threading
 import cv2
 import time
 import numpy as np
+
 # データ受け取り用の関数
 def udp_receiver():
         global battery_text

@@ -4,6 +4,10 @@ import cv2
 import time
 import numpy as np
 
+# auto connention
+import auto_connect
+auto_connect.connect()
+
 # データ受け取り用の関数
 def udp_receiver():
         global battery_text
@@ -137,7 +141,8 @@ sock.bind(('', TELLO_PORT))
 
 # 問い合わせスレッド起動
 ask_thread = threading.Thread(target=ask)
-ask_thread.setDaemon(True) #ask_thread.daemon = True 
+#ask_thread.setDaemon(True) 
+ask_thread.daemon = True 
 ask_thread.start()
 
 # 受信用スレッドの作成
