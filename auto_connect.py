@@ -7,6 +7,8 @@ def connect():
     iface = wifi.interfaces()[0]    # Returns a list of Wi-Fi interfaces connected to the computer.
     Name = iface.name() # Get the name of the obtained Wi-Fi interface.
 
+    iface.disconnect()
+    
     # Create profile
     profile = pywifi.Profile()
     profile.ssid = 'TELLO-9B2E90'
