@@ -19,11 +19,15 @@ def connect():
     iface.connect(tmp_profile)  # Connect to the internet.
 
     # Display "Connection Successful" or "Connection Failed".
+    print("Connecting.")
     for i in range(100):
-        time.sleep(1)
-        print(iface.status())
+        time.sleep(0.5)
         if iface.status() == const.IFACE_CONNECTED:
             print('Connected!')
             break
+        print("reonnecting...")
     else:
         print('Failed Connecting.')
+
+if __name__ == "__main__":
+    connect()
