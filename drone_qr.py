@@ -205,7 +205,6 @@ while True:
 
     
     
-
     # 送信したコマンドを表示
     cv2.putText(frame_output,
             text="Cmd:" + command_text,
