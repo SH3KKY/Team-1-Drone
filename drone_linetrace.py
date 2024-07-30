@@ -4,6 +4,10 @@ import cv2
 import time
 import numpy as np
 
+# auto connention
+import auto_connect
+auto_connect.connect()
+
 # データ受け取り用の関数
 def udp_receiver():
         global battery_text

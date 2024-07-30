@@ -187,12 +187,15 @@ while True:
 
     # カメラ映像のサイズを半分にする
     frame_height, frame_width = frame.shape[:2]
-    frame_resized = cv2.resize(frame, (frame_width//3, frame_height//3))
+    frame_resized = cv2.resize(frame, (frame_width//2, frame_height//2))
     frame_output = frame_resized
+
+    frame_gray = cv2.cvtColor(frame_resized, cv2.COLOR_BGR2GRAY)
+    frame_output = frame_gray
 
     # qrコードの読み取り
     if cnt_frame % 5 == 0:
-        retval, decoded_info, points, straight_qrcode = qcd.detectAndDecodeMulti(frame_resized) 
+        retval, decoded_info, points, straight_qrcode = qcd.detectAndDecodeMulti(frame_gray) 
         if retval:
             frame_qrdet = cv2.polylines(frame_resized, points.astype(int), True, (0, 255, 0), 3)
             frame_ouput = frame_qrdet
