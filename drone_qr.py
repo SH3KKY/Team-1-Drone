@@ -187,7 +187,7 @@ while True:
 
     # カメラ映像のサイズを半分にする
     frame_height, frame_width = frame.shape[:2]
-    frame_resized = cv2.resize(frame, (frame_width//2, frame_height//2))
+    frame_resized = cv2.resize(frame, (frame_width//3, frame_height//3))
     frame_output = frame_resized
 
     frame_gray = cv2.cvtColor(frame_resized, cv2.COLOR_BGR2GRAY)
@@ -205,6 +205,7 @@ while True:
 
     
     
+
     # 送信したコマンドを表示
     cv2.putText(frame_output,
             text="Cmd:" + command_text,

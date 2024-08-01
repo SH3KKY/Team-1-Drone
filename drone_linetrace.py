@@ -70,25 +70,25 @@ def down():
 # 前に進む(0cm)
 def forward():
         try:
-            sent = sock.sendto('forward 0'.encode(encoding="utf-8"), TELLO_ADDRESS)
+            sent = sock.sendto('forward 30'.encode(encoding="utf-8"), TELLO_ADDRESS)
         except:
             pass
 # 後に進む(0cm)
 def back():
         try:
-            sent = sock.sendto('back 0'.encode(encoding="utf-8"), TELLO_ADDRESS)
+            sent = sock.sendto('back 30'.encode(encoding="utf-8"), TELLO_ADDRESS)
         except:
             pass
 # 右に進む(0cm)
 def right():
         try:
-            sent = sock.sendto('right 0'.encode(encoding="utf-8"), TELLO_ADDRESS)
+            sent = sock.sendto('right 30'.encode(encoding="utf-8"), TELLO_ADDRESS)
         except:
             pass
 # 左に進む(0cm)
 def left():
         try:
-            sent = sock.sendto('left 0'.encode(encoding="utf-8"), TELLO_ADDRESS)
+            sent = sock.sendto('left 30'.encode(encoding="utf-8"), TELLO_ADDRESS)
         except:
             pass
 # 右回りに回転(90 deg)
@@ -103,8 +103,8 @@ def ccw():
             sent = sock.sendto('ccw 90'.encode(encoding="utf-8"), TELLO_ADDRESS)
         except:
             pass
-# 速度変更(例：速度40cm/sec, 0 < speed < 100)
-def set_speed(n=40):
+# 速度変更(例：速度100cm/sec, 0 < speed < 100)
+def set_speed(n=100):
         try:
             sent = sock.sendto(f'speed {n}'.encode(encoding="utf-8"), TELLO_ADDRESS)
         except:
@@ -132,7 +132,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind(('', TELLO_PORT))
 # 問い合わせスレッド起動
 ask_thread = threading.Thread(target=ask)
-ask_thread.setDaemon(True)
+ask_thread.daemon = True
 ask_thread.start()
 # 受信用スレッドの作成
 recv_thread = threading.Thread(target=udp_receiver, args=())
@@ -174,9 +174,9 @@ def on_trackbar(val):
 #############################################
 
 # パラメータ変更部分（You may change following parameters.）
-H_MIN, H_MAX = 0, 0
-S_MIN, S_MAX = 0, 0
-V_MIN, V_MAX = 0, 0
+H_MIN, H_MAX = 50, 121
+S_MIN, S_MAX = 74, 246
+V_MIN, V_MAX = 41, 199
 
 #############################################
 
