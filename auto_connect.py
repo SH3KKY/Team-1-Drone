@@ -11,7 +11,7 @@ def connect():
     
     # Create profile
     profile = pywifi.Profile()
-    profile.ssid = 'TELLO-9B2E90'
+    profile.ssid = 'TELLO-9B2E38'
     #profile.auth = const.AUTH_ALG_OPEN
     #profile.akm.append(const.AKM_TYPE_WPA2PSK)
     profile.cipher = const.CIPHER_TYPE_CCMP

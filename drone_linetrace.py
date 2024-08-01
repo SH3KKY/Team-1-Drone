@@ -58,7 +58,7 @@ def land():
 # 上昇(20cm)
 def up():
         try:
-            sent = sock.sendto('up 20'.encode(encoding="utf-8"), TELLO_ADDRESS)
+            sent = sock.sendto('up 10'.encode(encoding="utf-8"), TELLO_ADDRESS)
         except:
             pass
 # 下降(20cm)
@@ -173,13 +173,14 @@ def on_trackbar(val):
 
 #############################################
 
-# パラメータ変更部分（You may change following parameters.）
-H_MIN, H_MAX = 50, 121
-S_MIN, S_MAX = 74, 246
-V_MIN, V_MAX = 41, 199
-
+#H_MIN, H_MAX, S_MIN, S_MAX, V_MIN, V_MAX
+hsv_params = {
+     "blue": (100, 140, 74, 246, 41, 199), # blue color
+     "red": (0, 12, 74, 246, 41, 199), # red color
+}
 #############################################
 
+H_MIN, H_MAX, S_MIN, S_MAX, V_MIN, V_MAX = hsv_params["red"]
 
 # トラックバーの生成
 cv2.createTrackbar("H_min", window_title, H_MIN, 179, on_trackbar)
@@ -189,7 +190,7 @@ cv2.createTrackbar("S_max", window_title, S_MAX, 255, on_trackbar)
 cv2.createTrackbar("V_min", window_title, V_MIN, 255, on_trackbar)
 cv2.createTrackbar("V_max", window_title, V_MAX, 255, on_trackbar)
 a = b = c = d = 0   # rcコマンドの初期値を入力
-b = 0              # 前進の値を0に設定
+b = 40              # 前進の値を0に設定
 flag = 0
 
 # 繰り返し実行
@@ -268,6 +269,8 @@ try:
                 d =  70 if d >  70.0 else d
                 d = -70 if d < -70.0 else d
                 print('dx=%f'%(dx) )
+                #b = 100 / (d ** 2 + 1)
+                #print(b, (d ** 2 + 1))
                 sock.sendto(('rc %s %s %s %s'%(int(a), int(b), int(c), int(d))).encode(encoding="utf-8"), TELLO_ADDRESS )
         # (X)ウィンドウに表示
         out_image = masked_image
