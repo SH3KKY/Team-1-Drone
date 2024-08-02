@@ -180,7 +180,7 @@ hsv_params = {
 }
 #############################################
 
-H_MIN, H_MAX, S_MIN, S_MAX, V_MIN, V_MAX = hsv_params["red"]
+H_MIN, H_MAX, S_MIN, S_MAX, V_MIN, V_MAX = hsv_params["blue"]
 
 # トラックバーの生成
 cv2.createTrackbar("H_min", window_title, H_MIN, 179, on_trackbar)
@@ -190,7 +190,7 @@ cv2.createTrackbar("S_max", window_title, S_MAX, 255, on_trackbar)
 cv2.createTrackbar("V_min", window_title, V_MIN, 255, on_trackbar)
 cv2.createTrackbar("V_max", window_title, V_MAX, 255, on_trackbar)
 a = b = c = d = 0   # rcコマンドの初期値を入力
-b = 40              # 前進の値を0に設定
+b = 25              # 前進の値を0に設定
 flag = 0
 
 # 繰り返し実行
@@ -269,8 +269,6 @@ try:
                 d =  70 if d >  70.0 else d
                 d = -70 if d < -70.0 else d
                 print('dx=%f'%(dx) )
-                #b = 100 / (d ** 2 + 1)
-                #print(b, (d ** 2 + 1))
                 sock.sendto(('rc %s %s %s %s'%(int(a), int(b), int(c), int(d))).encode(encoding="utf-8"), TELLO_ADDRESS )
         # (X)ウィンドウに表示
         out_image = masked_image
